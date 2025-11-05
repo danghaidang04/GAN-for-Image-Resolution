@@ -14,7 +14,9 @@ print("🚀 Using device:", device)
 # --------------------
 # Load Generator
 # --------------------
-netG = Generator().to(device)
+# netG = Generator().to(device)
+netG = Generator(num_blocks=4, upscale_factor=HR_SIZE // LR_SIZE).to(device)
+
 netG.load_state_dict(torch.load("generator.pth", map_location=device))
 netG.eval()  # chuyển sang eval mode
 
