@@ -2,7 +2,7 @@ import torch
 from PIL import Image
 from torchvision import transforms
 from models import Generator
-
+from config import LR_SIZE, HR_SIZE
 
 print("🚀 Starting inference...")
 # --------------------
@@ -22,7 +22,7 @@ netG.eval()  # chuyển sang eval mode
 # Transform cho ảnh LR
 # --------------------
 transform_lr = transforms.Compose([
-    transforms.Resize((64,64)),
+    transforms.Resize((LR_SIZE, LR_SIZE)),
     transforms.ToTensor(),
     transforms.Normalize([0.5]*3, [0.5]*3)
 ])
